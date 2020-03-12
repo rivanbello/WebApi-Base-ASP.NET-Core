@@ -1,9 +1,9 @@
 ﻿using Segfy.Core.Business.Models.Base;
 using System;
 
-namespace Segfy.Core.Business.Models
+namespace Segfy.Youtube.Models
 {
-    public class Youtube : Entity
+    public class YoutubeModel : Entity
     {
         public Youtube(Item item)
         {

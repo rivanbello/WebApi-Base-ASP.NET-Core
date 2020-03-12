@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Segfy.Core.Business.Models
+namespace Segfy.Youtube.Models
 {
 
     public class PageInfo
