@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Segfy.Core.Business.Interfaces.Arguments;
-using Segfy.Core.Business.Notifications;
+using Segfy.Core.Notifications;
 using System.Linq;
 
 namespace Segfy.Api.Controllers

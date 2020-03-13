@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Segfy.Core.Business.Models.Base;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,10 +7,31 @@ namespace Segfy.Core.Getway
 {
     public class Reader :IReader
     {
-        public async Task<T> Get<T>(string URI, ReaderParams readerParams) where T : object
+        public async Task<T> Get<T>(string URI, ReaderParams readerParams) where T : IResponse
         {
             try
             {
+                //Preparar URL
+                if (readerParams.urlParams.Count > 0)
+                {
+                    var count = 0;
+                    URI = string.Format("{0}", URI);
+
+                    foreach (var item in readerParams.urlParams)
+                    {
+                        if (count > 0)
+                        {
+                            URI += string.Format("&{0}={1}", item.Key, item.Value);
+                        }
+                        else
+                        {
+                            URI += string.Format("{0}={1}", item.Key, item.Value);
+                        }
+
+                        count++;
+                    }
+                }
+
                 using (var client = new HttpClient())
                 {
                     if (readerParams.Token != null)

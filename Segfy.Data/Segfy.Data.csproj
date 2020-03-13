@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Segfy.Business\Segfy.Core.csproj" />
+    <ProjectReference Include="..\Segfy.Youtube\Segfy.Youtube.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,14 +5,14 @@ namespace Segfy.Youtube.Models
 {
     public class YoutubeModel : Entity
     {
-        public Youtube(Item item)
+        public YoutubeModel()
         {
-            Title = item.snippet.title;
-            Description = item.snippet.description;
-            ThumbnailUrl = item.snippet.thumbnails.medium.url;
-            IsChannel = item.kind == "youtube#channel";
-            ChannelName = item.snippet.channelTitle;
-            PublishedAt = item.snippet.publishedAt;
+            //Title = item.snippet.title;
+            //Description = item.snippet.description;
+            //ThumbnailUrl = item.snippet.thumbnails.medium.url;
+            //IsChannel = item.kind == "youtube#channel";
+            //ChannelName = item.snippet.channelTitle;
+            //PublishedAt = item.snippet.publishedAt;
         }
 
         public string Title{ get; set; }

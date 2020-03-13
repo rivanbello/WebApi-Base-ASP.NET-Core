@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Segfy.Business.Models;
+using Segfy.Youtube.Models;
 
 namespace Segfy.Data.Persistence
 {
@@ -7,7 +7,7 @@ namespace Segfy.Data.Persistence
     {
         public SegfyContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Youtube> Youtube { get; set; }
+        public DbSet<YoutubeModel> Youtube { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

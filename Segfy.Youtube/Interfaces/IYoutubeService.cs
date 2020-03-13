@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Segfy.Youtube.Services
+namespace Segfy.Youtube.Interfaces
 {
     public interface IYoutubeService : IDisposable
     {
-        Task<IEnumerable<YoutubeModel>> Search(string query);
+        Task<IEnumerable<YoutubeModel>> Search(YoutubeResponse youtubeResponse);
     }
 }

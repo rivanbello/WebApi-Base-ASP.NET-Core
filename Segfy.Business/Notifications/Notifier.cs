@@ -10,9 +10,9 @@ namespace Segfy.Core.Notifications
     {
         private List<Notification> _notifications;
 
-        public Notifier(List<Notification> notification)
+        public Notifier()
         {
-            _notifications = notification;
+            _notifications = new List<Notification>();
         }
 
         public List<Notification> GetNotifications()

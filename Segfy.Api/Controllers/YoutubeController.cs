@@ -1,10 +1,9 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Segfy.Core.Business.Interfaces.Arguments;
 using Segfy.Core.Getway;
+using Segfy.Youtube.Interfaces;
 using Segfy.Youtube.Models;
-using Segfy.Youtube.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,23 +14,21 @@ namespace Segfy.Api.Controllers
     public class YoutubeController : MainController
     {
         private readonly IYoutubeService _youtubeService;
-        private readonly IMapper _mapper;
         private readonly IReader _reader;
         private readonly IConfiguration _config;
 
         public YoutubeController(IYoutubeService youtubeService,
-                                 IMapper mapper, IReader reader,
+                                 IReader reader,
                                  IConfiguration config,
                                  INotifier notifier) : base(notifier)
         {
             _youtubeService = youtubeService;
-            _mapper = mapper;
             _reader = reader;
             _config = config;
         }
 
         // GET api/get-videos
-        [HttpGet("get-videos/{query:string}")]
+        [HttpGet("getvideos/{query}")]
         public async Task<ActionResult<IEnumerable<YoutubeModel>>> GetByQuery(string query)
         {
             if (string.IsNullOrEmpty(query))

@@ -1,7 +1,7 @@
 ﻿using Segfy.Core.Application.Services.Base;
 using Segfy.Core.Business.Interfaces.Arguments;
-using Segfy.Core.Business.Interfaces.Repositories;
 using Segfy.Youtube.Models;
+using Segfy.Youtube.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,7 +17,7 @@ namespace Segfy.Youtube.Services
             _youtubeRepository = youtubeRepository;
         } 
 
-        public async Task<IEnumerable<YoutubeModel>> Search(string query)
+        public async Task<IEnumerable<YoutubeModel>> Search(YoutubeResponse youtubeResponse)
         {
 
             return null;

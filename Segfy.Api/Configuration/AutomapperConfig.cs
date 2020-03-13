@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Segfy.Business.Models;
 
 namespace Segfy.Api.Configuration
 {

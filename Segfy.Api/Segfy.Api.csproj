@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Segfy.Youtube\Segfy.Youtube.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dto\" />
-  </ItemGroup>
-
 </Project>

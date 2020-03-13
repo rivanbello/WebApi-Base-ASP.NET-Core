@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Segfy.Business.Models;
+using Segfy.Youtube.Models;
 
 namespace Segfy.Data.Persistence.Mappings
 {
-    public class YoutubeMapping : IEntityTypeConfiguration<Youtube>
+    public class YoutubeMapping : IEntityTypeConfiguration<YoutubeModel>
     {
-        public void Configure(EntityTypeBuilder<Youtube> builder)
+        public void Configure(EntityTypeBuilder<YoutubeModel> builder)
         {
             builder.ToTable("Yoututbe");
 

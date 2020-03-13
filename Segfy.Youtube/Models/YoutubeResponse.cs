@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Segfy.Core.Getway;
+using System;
 using System.Collections.Generic;
 
 namespace Segfy.Youtube.Models
@@ -64,7 +65,7 @@ namespace Segfy.Youtube.Models
         public Snippet snippet { get; set; }
     }
 
-    public class YoutubeResponse
+    public class YoutubeResponse : IResponse
     {
         public string kind { get; set; }
         public string etag { get; set; }

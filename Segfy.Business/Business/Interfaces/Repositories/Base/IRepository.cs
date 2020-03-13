@@ -14,7 +14,7 @@ namespace Segfy.Core.Business.Interfaces.Repositories.Base
 
         Task<IEnumerable<TEntity>> ListBy(Expression<Func<TEntity, bool>> predicate);
 
-        Task<List<TEntity>> GetById(Guid id);
+        Task<TEntity> GetById(Guid id);
 
         Task Update(TEntity entity);
 
