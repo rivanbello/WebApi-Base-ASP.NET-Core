@@ -5,6 +5,7 @@ using Segfy.Core.Getway;
 using Segfy.Youtube.Interfaces;
 using Segfy.Youtube.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Segfy.Api.Controllers
@@ -14,49 +15,40 @@ namespace Segfy.Api.Controllers
     public class YoutubeController : MainController
     {
         private readonly IYoutubeService _youtubeService;
-        private readonly IReader _reader;
-        private readonly IConfiguration _config;
+        
 
         public YoutubeController(IYoutubeService youtubeService,
-                                 IReader reader,
-                                 IConfiguration config,
                                  INotifier notifier) : base(notifier)
         {
             _youtubeService = youtubeService;
-            _reader = reader;
-            _config = config;
         }
 
-        // GET api/get-videos
-        [HttpGet("getvideos/{query}")]
-        public async Task<ActionResult<IEnumerable<YoutubeModel>>> GetByQuery(string query)
+        // GET api/search
+        [HttpGet("search/{query}")]
+        public async Task<ActionResult<YoutubeDto>> GetByQuery(string query)
         {
             if (string.IsNullOrEmpty(query))
             {
                 return BadRequest();
             }
 
-            var youtubeConfigs = _config.GetSection("YoutubeConfigs");
-            var baseUrl = youtubeConfigs["baseUrl"].ToString();
-            var key = youtubeConfigs["key"].ToString();
-
-            //var url = string.Format("{0}search?part=snippet&q={1}&key={2}", baseUrl, query, key);
-
-            var readerParams = new ReaderParams
-            {
-                urlParams = new Dictionary<string, string>
-                {
-                    { "part", "snippet" },
-                    { "q", query },
-                    { "key", key }
-                }
-            };
-
-            var res = await _reader.Get<YoutubeResponse>(baseUrl + "search?", readerParams);
-
-            var result = _youtubeService.Search(res);
+            var result = _youtubeService.Search(query);
 
             return Ok(result);
+        }
+
+        // GET api/get-items
+        [HttpGet("get-items")]
+        public async Task<ActionResult<YoutubeDto>> GetItems()
+        {
+            var res = _youtubeService.GetItems().Result.ToList();
+
+            //var result = new YoutubeDto
+            //{
+            //    Items = res.Select(x => )
+            //};
+
+            return Ok(res);
         }
     }
 }

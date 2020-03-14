@@ -7,6 +7,8 @@ namespace Segfy.Youtube.Interfaces
 {
     public interface IYoutubeService : IDisposable
     {
-        Task<IEnumerable<YoutubeModel>> Search(YoutubeResponse youtubeResponse);
+        Task<YoutubeDto> Search(string query);
+
+        Task<IEnumerable<YoutubeModel>> GetItems();
     }
 }

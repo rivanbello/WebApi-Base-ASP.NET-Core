@@ -19,5 +19,7 @@ namespace Segfy.Core.Business.Interfaces.Repositories.Base
         Task Update(TEntity entity);
 
         Task<int> SaveChanges();
+
+        bool Exists(Func<TEntity, bool> where);
     }
 }

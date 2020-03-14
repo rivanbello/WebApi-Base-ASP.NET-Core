@@ -52,6 +52,11 @@ namespace Segfy.Data.Persistence.Repository.Base
             await SaveChanges();
         }
 
+        public bool Exists(Func<TEntity, bool> where)
+        {
+            return DbSet.Any(where);
+        }
+
         public void Dispose()
         {
             Db?.Dispose();
