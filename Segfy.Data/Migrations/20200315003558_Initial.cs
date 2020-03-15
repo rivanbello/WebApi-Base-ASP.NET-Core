@@ -12,13 +12,14 @@ namespace Segfy.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    youtubeId = table.Column<string>(type: "varchar(200)", nullable: false),
                     Title = table.Column<string>(type: "varchar(200)", nullable: false),
                     Description = table.Column<string>(type: "varchar(200)", nullable: false),
-                    Thumbnail = table.Column<string>(type: "varchar(200)", nullable: false),
-                    IsChannel = table.Column<bool>(type: "bit", nullable: false),
+                    ThumbnailUrl = table.Column<string>(type: "varchar(200)", nullable: false),
+                    IsChannel = table.Column<bool>(type: "boolean", nullable: false),
                     ChannelName = table.Column<string>(type: "varchar(200)", nullable: false),
-                    PublishedAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false)
+                    PublishedAt = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {

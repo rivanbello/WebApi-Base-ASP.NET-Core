@@ -30,7 +30,7 @@ namespace Segfy.Data.Persistence.Mappings
 
             builder.Property(c => c.IsChannel)
                 .IsRequired()
-                .HasColumnType("bit");
+                .HasColumnType("boolean");
 
             builder.Property(c => c.ChannelName)
                 .IsRequired()
@@ -38,11 +38,11 @@ namespace Segfy.Data.Persistence.Mappings
 
             builder.Property(c => c.PublishedAt)
                 .IsRequired()
-                .HasColumnType("datetime");
+                .HasColumnType("timestamp");
 
             builder.Property(c => c.CreatedAt)
                 .IsRequired()
-                .HasColumnType("datetime");
+                .HasColumnType("timestamp");
 
         }
     }
