@@ -15,7 +15,7 @@ namespace Segfy.Api.Controllers
     public class YoutubeController : MainController
     {
         private readonly IYoutubeService _youtubeService;
-        
+
 
         public YoutubeController(IYoutubeService youtubeService,
                                  INotifier notifier) : base(notifier)
@@ -32,7 +32,7 @@ namespace Segfy.Api.Controllers
                 return BadRequest();
             }
 
-            var result = _youtubeService.Search(query);
+            var result = await _youtubeService.Search(query);
 
             return Ok(result);
         }
@@ -41,14 +41,14 @@ namespace Segfy.Api.Controllers
         [HttpGet("get-items")]
         public async Task<ActionResult<YoutubeDto>> GetItems()
         {
-            var res = _youtubeService.GetItems().Result.ToList();
+            var res = await _youtubeService.GetItems();
 
-            //var result = new YoutubeDto
-            //{
-            //    Items = res.Select(x => )
-            //};
+            var result = new YoutubeDto
+            {
+                Items = res.ToList()
+            };
 
-            return Ok(res);
+            return Ok(result);
         }
     }
 }

@@ -47,19 +47,45 @@ namespace Segfy.Youtube.Services
             var youtubeDto = new YoutubeDto
             {
                 NextPageToken = youtubeResponse.nextPageToken,
-                Items = youtubeResponse.items.Select(x => new YoutubeModel(x))
             };
 
-            foreach (var item in youtubeDto.Items)
+            foreach (var item in youtubeResponse.items)
             {
-                if (_youtubeRepository.Exists(x => x.youtubeId == item.youtubeId))
+                var ytModel = new YoutubeModel();
+
+                ytModel.Title = item.snippet.title;
+                ytModel.Description = item.snippet.description;
+                ytModel.PublishedAt = item.snippet.publishedAt;
+                ytModel.IsChannel = false;
+                ytModel.ChannelName = item.snippet.channelTitle;
+                ytModel.ThumbnailUrl = item.snippet.thumbnails.medium.url;
+
+                if (item.id.kind == "youtube#channel")
                 {
-                    await _youtubeRepository.Update(item);
+                    ytModel.IsChannel = true;
+                    ytModel.youtubeId = item.id.channelId;
+                }
+                else if(item.id.kind == "youtube#video")
+                {
+                    ytModel.youtubeId = item.id.videoId;
                 }
                 else
                 {
-                    await _youtubeRepository.Create(item);
+                    ytModel.youtubeId = item.id.playlistId;
                 }
+
+                if (_youtubeRepository.Exists(x => x.youtubeId == ytModel.youtubeId))
+                {
+                    var res = _youtubeRepository.ListBy(x => x.youtubeId == ytModel.youtubeId).Result.FirstOrDefault();
+                    ytModel.Id = res.Id;
+                    await _youtubeRepository.Update(ytModel);
+                }
+                else
+                {
+                    await _youtubeRepository.Create(ytModel);
+                }
+
+                youtubeDto.Items.Add(ytModel);
             }
 
             return youtubeDto;

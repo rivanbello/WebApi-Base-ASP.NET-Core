@@ -16,6 +16,7 @@ namespace Segfy.Youtube.Models
         public string kind { get; set; }
         public string channelId { get; set; }
         public string videoId { get; set; }
+        public string playlistId { get; set; }
     }
 
     public class Default

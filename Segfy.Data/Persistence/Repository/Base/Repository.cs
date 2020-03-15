@@ -48,13 +48,14 @@ namespace Segfy.Data.Persistence.Repository.Base
 
         public virtual async Task Update(TEntity entity)
         {
+            Db.Entry(entity).State = EntityState.Modified;
             DbSet.Update(entity);
-            await SaveChanges();
+            await Db.SaveChangesAsync();
         }
 
         public bool Exists(Func<TEntity, bool> where)
         {
-            return DbSet.Any(where);
+            return DbSet.AsNoTracking().Any(where);
         }
 
         public void Dispose()

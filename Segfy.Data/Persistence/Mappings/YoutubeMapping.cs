@@ -12,6 +12,10 @@ namespace Segfy.Data.Persistence.Mappings
 
             builder.HasKey(p => p.Id);
 
+            builder.Property(c => c.youtubeId)
+                .IsRequired()
+                .HasColumnType("varchar(200)");
+
             builder.Property(c => c.Title)
                 .IsRequired()
                 .HasColumnType("varchar(200)");

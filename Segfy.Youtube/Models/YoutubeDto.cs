@@ -7,9 +7,10 @@ namespace Segfy.Youtube.Models
     {
         public YoutubeDto()
         {
+            Items = new List<YoutubeModel>();
         }
 
-        public IEnumerable<YoutubeModel> Items { get; set; }
+        public List<YoutubeModel> Items { get; set; }
 
         public string NextPageToken { get; set; }
     }

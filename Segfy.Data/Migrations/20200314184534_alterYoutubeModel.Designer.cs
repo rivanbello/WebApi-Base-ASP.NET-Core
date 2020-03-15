@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Segfy.Data.Persistence;
 
 namespace Segfy.Data.Migrations
 {
     [DbContext(typeof(SegfyContext))]
-    partial class SegfyContextModelSnapshot : ModelSnapshot
+    [Migration("20200314184534_alterYoutubeModel")]
+    partial class alterYoutubeModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
