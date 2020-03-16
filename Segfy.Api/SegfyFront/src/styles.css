@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+.main-container {
+  padding-top: 100px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+.footer {
+  height: 50px;
+  text-align: center;
+}
+
+.text-concat {
+  position: relative;
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3.6em; /* (Number of lines you want visible) * (line-height) */
+  line-height: 1.2em;
+  text-align: justify;
+}
+
+.text-concat-title {
+  position: relative;
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 1em; /* (Number of lines you want visible) * (line-height) */
+  line-height: 1.2em;
+  text-align: justify;
+}
