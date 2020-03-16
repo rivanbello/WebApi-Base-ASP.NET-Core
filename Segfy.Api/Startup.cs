@@ -31,6 +31,15 @@ namespace Segfy.Api
 
             services.WebApiConfig();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Development",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
             services.ResolveDependencies();
         }
 
@@ -47,6 +56,7 @@ namespace Segfy.Api
                 app.UseHsts();
             }
 
+            app.UseCors("Development");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
